@@ -1,345 +1,802 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Laszlo Nagy - Software Engineer specializing in web development and cloud technologies.">
-    <title>Laszlo Nagy - Software Developer</title>
-    <link rel="stylesheet" href="output.css">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T0NL73SZBT"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-T0NL73SZBT');
-    </script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="László Nagy — Software Engineer & Consultant helping businesses build scalable cloud platforms and web applications.">
+  <title>László Nagy — Software Engineer & Consultant</title>
+  <link rel="stylesheet" href="output.css">
+  <!-- Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T0NL73SZBT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-T0NL73SZBT');
+  </script>
+  <style>
+    /* Dark mode variables */
+    :root {
+      --bg-primary: #fafaf9;
+      --bg-secondary: #ffffff;
+      --text-primary: #1c1917;
+      --text-secondary: #57534e;
+      --text-muted: #a8a29e;
+      --border-color: #e7e5e4;
+      --accent: #1c1917;
+      --accent-hover: #292524;
+    }
+    
+    html.dark {
+      --bg-primary: #0c0a09;
+      --bg-secondary: #1c1917;
+      --text-primary: #fafaf9;
+      --text-secondary: #d6d3d1;
+      --text-muted: #78716c;
+      --border-color: #292524;
+      --accent: #fafaf9;
+      --accent-hover: #e7e5e4;
+    }
+    
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    /* Dark mode overrides */
+    html.dark .bg-stone-50 { background-color: var(--bg-primary); }
+    html.dark .bg-white { background-color: var(--bg-secondary); }
+    html.dark .bg-white\/80 { background-color: rgba(28, 25, 23, 0.8); }
+    html.dark .text-stone-900 { color: var(--text-primary); }
+    html.dark .text-stone-700 { color: var(--text-secondary); }
+    html.dark .text-stone-600 { color: var(--text-secondary); }
+    html.dark .text-stone-500 { color: var(--text-muted); }
+    html.dark .border-stone-200 { border-color: var(--border-color); }
+    html.dark .border-stone-300 { border-color: var(--border-color); }
+    html.dark .ring-stone-200 { --tw-ring-color: var(--border-color); }
+    html.dark .bg-stone-100 { background-color: #292524; }
+    html.dark .bg-stone-900 { background-color: var(--accent); color: #0c0a09; }
+    html.dark .hover\:bg-stone-800:hover { background-color: var(--accent-hover); }
+    html.dark .hover\:bg-stone-100:hover { background-color: #292524; }
+    html.dark canvas { opacity: 0.7; }
+    
+    /* Fade in animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    .delay-100 { animation-delay: 0.1s; opacity: 0; }
+    .delay-200 { animation-delay: 0.2s; opacity: 0; }
+    .delay-300 { animation-delay: 0.3s; opacity: 0; }
+    .delay-400 { animation-delay: 0.4s; opacity: 0; }
+    
+    /* Service card hover effect */
+    .service-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
+    }
+    html.dark .service-card:hover {
+      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.4);
+    }
+  </style>
+  <script>
+    // Check for dark mode preference - prioritize system preference if no manual override
+    const savedDarkMode = localStorage.getItem('darkMode');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedDarkMode === null) {
+      // No manual preference saved, use system preference
+      if (systemPrefersDark) {
+        document.documentElement.classList.add('dark');
+      }
+    } else if (savedDarkMode === 'true') {
+      // Manual preference saved as dark
+      document.documentElement.classList.add('dark');
+    }
+  </script>
 </head>
-
-<body class="font-Karla bg-stone-50 text-justify">
-    <header>
-        <div
-            class="flex px-6 py-3 justify-between items-center bg-gradient-to-r from-indigo-300 to-indigo-500 text-slate-100 w-full">
-            <div class="text-lg">
-                <a href="#">László Nagy</a>
-            </div>
-            <div class="space-x-12 items-center hidden md:flex">
-                <a href="#" class="hover:text-white">Home</a>
-                <a href="#about" class="hover:text-white">About me</a>
-                <a href="#projects" class="hover:text-white">Projects</a>
-                <a href="#contact" class="px-2 py-2 rounded-lg border border-slate-100  hover:text-white transition">Get
-                    in touch</a>
-            </div>
+<body class="bg-stone-50 text-stone-900 antialiased font-Karla">
+  <!-- Site Header -->
+  <header class="fixed inset-x-0 top-0 z-40 bg-white/80 backdrop-blur border-b border-stone-200">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#home" class="text-xl font-bold tracking-tight hover:opacity-90 transition" aria-label="Go to home">
+          László Nagy
+        </a>
+        <div class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#about" class="text-stone-600 hover:text-stone-900 transition">About</a>
+          <a href="#services" class="text-stone-600 hover:text-stone-900 transition">Services</a>
+          <a href="#experience" class="text-stone-600 hover:text-stone-900 transition">Experience</a>
+          <a href="#skills" class="text-stone-600 hover:text-stone-900 transition">Skills</a>
+          <a href="#work" class="text-stone-600 hover:text-stone-900 transition">Projects</a>
+          <!-- Dark mode toggle -->
+          <button id="dark-mode-toggle" class="p-2 rounded-full hover:bg-stone-100 transition" aria-label="Toggle dark mode">
+            <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+            <svg class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+          </button>
+          <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-stone-900 text-white px-4 py-2 hover:bg-stone-800 transition">
+            <span>Get in Touch</span>
+          </a>
         </div>
-    </header>
-    <div class="container">
-        <div
-            class="flex flex-col md:flex-row space-y-4 space-x-4 xl:space-x-0 mt-10 md:mt-20 mx-auto p-4 sm:p-8 md:p-16 w-full lg:w-2/3 xl:w-3/4">
-            <div class="md:w-1/3">
-                <img src="images/hero.jpg" alt=""
-                    class="object-cover rounded-3xl w-full md:w-auto h-full xl:h-5/6 lg:aspect-square pr-3">
-            </div>
-            <div class="w-2/3">
-                <div>
-                    <p class="font-bold text-3xl md:text-6xl text-left">Hi 👋, I'm László.</p>
-                    <p class="text-lg md:text-2xl mt-2 text-left">
-                        Software Engineer. Web Developer. Cloud Enthusiast.
-                    </p>
-                </div>
-                <div class="mt-2 sm:mt-10 flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0 sm:items-center">
-                    <a href="mailto:laszlo@laszlo-nagy.com"">
-                        <img src=" https://img.icons8.com/dotty/80/000000/mail.png"
-                        class="inline-block h-10 opacity-80 hover:opacity-100" />
-                    </a>
-                    <a href="https://www.linkedin.com/in/laszlonagy97" target="_blank">
-                        <img src="https://img.icons8.com/dotty/80/000000/linkedin.png"
-                            class="inline-block h-10 opacity-80 hover:opacity-100" />
-                    </a>
-                    <a href="https://www.github.com/nlacko97" target="_blank">
-                        <img src="https://img.icons8.com/dotty/80/000000/github.png"
-                            class="inline-block h-10 opacity-80 hover:opacity-100" />
-                    </a>
-                    <a href="https://www.instagram.com/nlacko97" target="_blank">
-                        <img src="https://img.icons8.com/dotty/80/000000/instagram-new.png"
-                            class="inline-block h-10 opacity-80 hover:opacity-100" />
-                    </a>
-                    <a href="/public/laszlo_nagy_cv.pdf" download
-                        class="px-2 py-2.5 rounded-lg bg-indigo-400 hover:bg-indigo-500 text-white transition">
-                        Download CV
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="flex-col border-t border-gray-900 w-2/3 mx-auto pt-4 mt-32">
-            <p class="text-4xl mt-2" id="about">
-                About Me
-            </p>
-            <div class="flex flex-col-reverse lg:flex-row ">
-                <div class="lg:w-3/4 lg:pr-12">
-                    <p class="text-justify mt-4">
-                        I'm a 24 year old software developer from Transylvania. Having lived in Romania, the Czech
-                        Republic,
-                        Austria, Finland, and most recently, Italy, making sense out of the unknown is not new to me.
-                        <br>
-                        I spend most of my free time outdoors, climbing on rocks, scaling mountains on foot or skis,
-                        looking for something extreme to get my blood boiling. But sometimes I just enjoy sipping on
-                        some specialty coffee while tinkering with new technologies, watching a good movie, or reading a
-                        book.
-                    </p>
-                </div>
-                <div>
-                    <img src="images/landscape.jpg" alt="" class="object-cover rounded-2xl lg:h-40 mt-4 lg:mt-0">
-                </div>
-            </div>
-            <p class="text-lg font-semibold mt-4">
-                My Journey
-            </p>
-            <ol class="relative border-l border-gray-200 mb-4 ml-1">
-                <li class="mb-10 ml-4">
-                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border border-white">
-                    </div>
-                    <time class="mb-1 text-sm font-normal leading-none text-gray-400">2016</time>
-                    <h3 class="text-lg font-semibold text-gray-900">🎓Started my Bachelor's in Computer Science
-                    </h3>
-                    <p class="mb-4 text-base font-normal text-gray-500">
-                        Babes-Bolyai University, Cluj-Napoca
-                    </p>
-                </li>
-                <li class="mb-10 ml-4">
-                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border border-white">
-                    </div>
-                    <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">2017</time>
-                    <h3 class="text-lg font-semibold text-gray-900 ">🐱‍💻HackTGM</h3>
-                    <p class="text-base font-normal text-gray-500 ">
-                        Won the prize of "Intelligence in Software" at the <a
-                            href="https://devpost.com/software/voluntapp" target="_blank"
-                            class="text-indigo-600 hover:text-indigo-300">HackTGM Hackathon</a> with my colleagues.
-                        Later
-                        we
-                        collaborated with one of the partner companies to bring the product idea to life, kicking off my
-                        journey into web development.
-                    </p>
-                </li>
+      </div>
+    </nav>
+  </header>
 
-                <li class="mb-10 ml-4">
-                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border border-white">
-                    </div>
-                    <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">2018</time>
-                    <h3 class="text-lg font-semibold text-gray-900 ">💻Web Developer Internship</h3>
-                    <p class="text-base font-normal text-gray-500 ">
-                        I've spent two months as a web developer intern at <code>Lynx Solutions</code>. <br>
-                        I designed and developed a RESTful API for a large user base, managed CI/CD pipelines, set up
-                        staging and production environments. Developed applications using Laravel, Node, SocketIO
-                        frameworks.
-                    </p>
-                </li>
-                <li class="mb-10 ml-4">
-                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border border-white">
-                    </div>
-                    <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">2019</time>
-                    <h3 class="text-lg font-semibold text-gray-900 ">🎓Obtained BSc in Computer Science</h3>
-                    <p class="text-base font-normal text-gray-500 ">
-                        In the summer I've graduated, obtaining my dimploma in Computer Science. <br>
-                        During this period, I've spend two semesters abroad with the Erasmus+ scholarship, studying at
-                        the <code>Charles University of Prague</code> and
-                        <code>Johannes Kepler University of Linz</code>.
-                    </p>
-                </li>
-                <li class="mb-10 ml-4">
-                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border border-white">
-                    </div>
-                    <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">2019 - 2021</time>
-                    <h3 class="text-lg font-semibold text-gray-900 ">💻Freelance Web Developer</h3>
-                    <p class="text-base font-normal text-gray-500 ">
-                        I've started working as a freelancer, and during the next two years I've worked on a number of
-                        commercial projects involving planning, tech architecture, delivery, and support for projects
-                        which include features such as online auction, web-shop,
-                        presentation site with online payment, invoicing, and content management. <br>
-                        Our tech stack: <code>Laravel, MySQL, Vue.js, Redis, SocketIO, Docker, AWS </code>
-                    </p>
-                </li>
-                <li class="mb-10 ml-4">
-                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border border-white">
-                    </div>
-                    <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">2020</time>
-                    <h3 class="text-lg font-semibold text-gray-900 ">🎓Started my Master's Degree</h3>
-                    <p class="text-base font-normal text-gray-500 ">
-                        Decided that I wanted to expand my area of expertise and I started the <a
-                            href="https://www.eitdigital.eu/" target="_blank"
-                            class=" text-indigo-600 hover:text-indigo-300">EIT Digital Master School</a>. <br>
-                        Major: <code>Cloud and Network Infrastructures</code> <br>
-                        For my first year I studied at <code>Aalto University</code> in Helsinki, Finland.
-                    </p>
-                </li>
-                <li class="mb-10 ml-4">
-                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border border-white">
-                    </div>
-                    <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">2021</time>
-                    <h3 class="text-lg font-semibold text-gray-900 ">🎓Second year of MSc</h3>
-                    <p class="text-base font-normal text-gray-500 ">
-                        After completing the first year and summer-school, I've moved to Trento, Italy to study at
-                        <code>Trento University</code> for my final year. <br>
-                        I've gained a lot of <i>technical knowledge</i> regarding network and cloud technologies, media
-                        delivery, high performance computing, big data platforms, and many more. <br>
-                        Additionally, we had to complete a minor in <code>Innovation and Entrepreneurship</code>, which
-                        provided a lot of insight into the world of business side and startups.
-                    </p>
-                </li>
-                <li class="mb-10 ml-4">
-                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full -left-1.5 border border-white">
-                    </div>
-                    <time class="mb-1 text-sm font-normal leading-none text-gray-400 ">2022</time>
-                    <h3 class="text-lg font-semibold text-gray-900 ">🚀The next step...</h3>
-                </li>
+  <main id="home" class="pt-24">
+    <!-- Hero -->
+    <section id="hero-section" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
+      <!-- Particle Canvas -->
+      <canvas id="hero-canvas" class="absolute inset-0 pointer-events-none" style="z-index: 1;"></canvas>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center py-16 md:py-24 relative" style="z-index: 2;">
+        <div>
+          <p class="text-sm uppercase tracking-widest text-stone-500 animate-fade-in-up">Full-Stack Software Engineer & Cloud Architect</p>
+          <h1 class="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in-up delay-100">
+            Driving innovation with cloud architecture and modern tech
+          </h1>
+          <p class="mt-6 text-stone-600 text-lg md:text-xl leading-relaxed animate-fade-in-up delay-200">
+            I help businesses leverage cutting-edge cloud solutions, serverless architectures, and AI to build scalable, production-ready systems. From AWS infrastructure to full-stack applications—real-world experience that drives results.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3 animate-fade-in-up delay-300">
+            <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-stone-900 text-white px-6 py-3 hover:bg-stone-800 transition-all hover:scale-105">
+              <span>Let's Talk</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
+            </a>
+            <a href="public/laszlo-nagy-cv.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full border border-stone-300 px-6 py-3 hover:bg-stone-100 transition-all hover:border-stone-400">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 16a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L11 12.586V4a1 1 0 1 1 2 0v8.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 12 16Z"/><path d="M5 20a1 1 0 1 1 0-2h14a1 1 0 1 1 0 2H5Z"/></svg>
+              <span>CV</span>
+            </a>
+            <a href="https://www.linkedin.com/in/laszlonagy97" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-stone-300 hover:bg-stone-100 transition-all hover:border-stone-400" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M4.983 3.5A2.483 2.483 0 0 0 2.5 5.983v12.034A2.483 2.483 0 0 0 4.983 20.5h12.034A2.483 2.483 0 0 0 19.5 18.017V5.983A2.483 2.483 0 0 0 17.017 3.5H4.983ZM8.25 9.75v7.5h-2.5v-7.5h2.5Zm-.125-3.125a1.375 1.375 0 1 1-2.75 0 1.375 1.375 0 0 1 2.75 0ZM12.25 17.25h-2.5v-7.5h2.4v1.026h.035c.334-.61 1.153-1.252 2.375-1.252 2.546 0 3.065 1.677 3.065 3.859v3.867h-2.5V14.75c0-.596-.01-1.364-.83-1.364-.832 0-.959.65-.959 1.321v2.543Z"/></svg>
+            </a>
+            <a href="https://github.com/nlacko97" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-stone-300 hover:bg-stone-100 transition-all hover:border-stone-400" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12.3c0 5.22 3.39 9.64 8.1 11.2.6.11.82-.27.82-.58 0-.29-.01-1.06-.02-2.08-3.29.73-3.99-1.62-3.99-1.62-.54-1.4-1.32-1.77-1.32-1.77-1.08-.76.08-.74.08-.74 1.2.09 1.83 1.26 1.83 1.26 1.06 1.87 2.77 1.33 3.44 1.02.11-.8.42-1.33.77-1.64-2.63-.31-5.39-1.36-5.39-6.06 0-1.34.46-2.43 1.22-3.29-.12-.31-.53-1.56.12-3.25 0 0 1-.33 3.3 1.26.95-.27 1.97-.4 2.98-.41 1.01 0 2.03.14 2.98.41 2.29-1.6 3.29-1.26 3.29-1.26.65 1.69.24 2.94.12 3.25.76.86 1.22 1.95 1.22 3.29 0 4.71-2.77 5.74-5.41 6.05.43.38.81 1.12.81 2.26 0 1.63-.02 2.95-.02 3.35 0 .31.22.69.83.57a11.5 11.5 0 0 0 8.09-11.2C23.5 6.27 18.73.5 12 .5Z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="relative animate-fade-in-up delay-400">
+          <img src="images/hero.jpg" alt="Portrait of László" class="w-full h-[460px] object-cover rounded-3xl shadow-2xl ring-1 ring-stone-200">
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="mt-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+        <!-- Section header -->
+        <div class="text-center max-w-2xl mx-auto">
+          <p class="text-sm uppercase tracking-widest text-stone-500">About Me</p>
+          <h2 class="mt-3 text-3xl md:text-4xl font-bold">
+            Full-Stack Engineer. Cloud Architect. Innovation Driver.
+          </h2>
+          <p class="mt-4 text-stone-600 text-lg">
+            Transforming business challenges into scalable cloud solutions with proven expertise from real-world projects.
+          </p>
+        </div>
+        
+        <!-- Bento grid layout -->
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Main intro card - spans 2 columns -->
+          <div class="lg:col-span-2 rounded-3xl bg-white border border-stone-200 p-8 md:p-10">
+            <p class="text-lg md:text-xl text-stone-700 leading-relaxed">
+              I'm a <strong class="text-stone-900">full-stack software engineer</strong> specializing in <strong class="text-stone-900">cloud architecture and AWS serverless systems</strong>. With hands-on experience from real production environments, I help businesses modernize infrastructure, build scalable data pipelines, and ship features faster.
+            </p>
+            <p class="mt-4 text-lg md:text-xl text-stone-700 leading-relaxed">
+              From <strong class="text-stone-900">IoT data processing</strong> to <strong class="text-stone-900">end-to-end web applications</strong>, I combine deep technical expertise with a pragmatic approach to innovation. I've worked across Europe, delivering solutions that leverage <strong class="text-stone-900">modern tech stacks, AI capabilities, and Infrastructure as Code</strong> to drive business outcomes.
+            </p>
+            <!-- <div class="mt-8 flex flex-wrap gap-3">
+              <span class="inline-flex items-center gap-2 rounded-full bg-stone-100 px-4 py-2 text-sm font-medium text-stone-700">
+                🇷🇴 Romania
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full bg-stone-100 px-4 py-2 text-sm font-medium text-stone-700">
+                🇫🇮 Finland
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full bg-stone-100 px-4 py-2 text-sm font-medium text-stone-700">
+                🇮🇹 Italy
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full bg-stone-100 px-4 py-2 text-sm font-medium text-stone-700">
+                🇦🇹 Austria
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full bg-stone-100 px-4 py-2 text-sm font-medium text-stone-700">
+                🇨🇿 Czech Republic
+              </span>
+            </div> -->
+          </div>
+          
+          <!-- Image card -->
+          <div class="rounded-3xl overflow-hidden">
+            <img src="images/landscape.jpg" alt="Mountain landscape" class="w-full h-full min-h-[280px] object-cover">
+          </div>
+          
+          <!-- Education card -->
+          <!-- <div class="rounded-3xl bg-stone-900 text-white p-8">
+            <p class="text-sm uppercase tracking-widest text-stone-400">Education</p>
+            <h3 class="mt-2 text-xl font-bold">MSc Cloud & Networks</h3>
+            <p class="mt-2 text-stone-300">EIT Digital Master School</p>
+            <div class="mt-4 space-y-2 text-sm text-stone-400">
+              <p>📚 Aalto University, Finland</p>
+              <p>📚 University of Trento, Italy</p>
+              <p class="mt-3 text-stone-300">+ Innovation & Entrepreneurship Minor</p>
+            </div>
+          </div> -->
+          
+          <!-- Current status card -->
+          <!-- <div class="rounded-3xl bg-white border border-stone-200 p-8">
+            <p class="text-sm uppercase tracking-widest text-stone-500">Currently</p>
+            <h3 class="mt-2 text-xl font-bold text-stone-900">Full-Stack & Cloud Engineer</h3>
+            <p class="mt-2 text-stone-600">Contract • DACH Region</p>
+            <ul class="mt-4 space-y-2 text-sm text-stone-600">
+              <li class="flex items-start gap-2">
+                <span class="text-green-500 mt-1">●</span>
+                <span>Serverless IoT data pipelines on AWS</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500 mt-1">●</span>
+                <span>Infrastructure as Code with Terraform</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500 mt-1">●</span>
+                <span>Modernizing CI/CD & Docker workflows</span>
+              </li>
+            </ul>
+          </div> -->
+          
+          <!-- Interests card -->
+          <!-- <div class="rounded-3xl bg-gradient-to-br from-stone-100 to-stone-50 border border-stone-200 p-8">
+            <p class="text-sm uppercase tracking-widest text-stone-500">Outside Work</p>
+            <div class="mt-4 space-y-4">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">🧗</span>
+                <span class="text-stone-700">Rock climbing</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">⛰️</span>
+                <span class="text-stone-700">Mountain hiking</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">☕</span>
+                <span class="text-stone-700">Specialty coffee</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">🌍</span>
+                <span class="text-stone-700">Exploring new places</span>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="border-t border-stone-200">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+        <div class="text-center max-w-2xl mx-auto">
+          <p class="text-sm uppercase tracking-widest text-stone-500">How I Can Help</p>
+          <h2 class="mt-3 text-3xl md:text-4xl font-bold">
+            Engineering & Consulting Services
+          </h2>
+          <p class="mt-4 text-stone-600 text-lg">
+            Whether you're a startup building your MVP or an established company scaling your infrastructure, I can help.
+          </p>
+        </div>
+        
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Service 1 -->
+          <div class="service-card rounded-2xl bg-white border border-stone-200 p-8">
+            <div class="w-12 h-12 rounded-xl bg-stone-900 text-white flex items-center justify-center text-xl">
+              ☁️
+            </div>
+            <h3 class="mt-4 text-lg font-bold text-stone-900">Cloud Architecture</h3>
+            <p class="mt-2 text-stone-600">
+              Design and implement scalable AWS infrastructure using serverless, containers, and IaC (Terraform).
+            </p>
+          </div>
+          
+          <!-- Service 2 -->
+          <div class="service-card rounded-2xl bg-white border border-stone-200 p-8">
+            <div class="w-12 h-12 rounded-xl bg-stone-900 text-white flex items-center justify-center text-xl">
+              🔧
+            </div>
+            <h3 class="mt-4 text-lg font-bold text-stone-900">Full-Stack Development</h3>
+            <p class="mt-2 text-stone-600">
+              Build complete web applications from database to UI. TypeScript, Node.js, Vue/Angular, and modern tooling.
+            </p>
+          </div>
+          
+          <!-- Service 3 -->
+          <div class="service-card rounded-2xl bg-white border border-stone-200 p-8">
+            <div class="w-12 h-12 rounded-xl bg-stone-900 text-white flex items-center justify-center text-xl">
+              🚀
+            </div>
+            <h3 class="mt-4 text-lg font-bold text-stone-900">MVP Development</h3>
+            <p class="mt-2 text-stone-600">
+              Turn your idea into a working product. Fast iteration, pragmatic architecture, launch-ready code.
+            </p>
+          </div>
+          
+          <!-- Service 4 -->
+          <div class="service-card rounded-2xl bg-white border border-stone-200 p-8">
+            <div class="w-12 h-12 rounded-xl bg-stone-900 text-white flex items-center justify-center text-xl">
+              📊
+            </div>
+            <h3 class="mt-4 text-lg font-bold text-stone-900">Data Pipelines</h3>
+            <p class="mt-2 text-stone-600">
+              Design data flows using AWS Lambda, Step Functions, Kinesis, and other serverless services.
+            </p>
+          </div>
+          
+          <!-- Service 5 -->
+          <div class="service-card rounded-2xl bg-white border border-stone-200 p-8">
+            <div class="w-12 h-12 rounded-xl bg-stone-900 text-white flex items-center justify-center text-xl">
+              ⚙️
+            </div>
+            <h3 class="mt-4 text-lg font-bold text-stone-900">DevOps & CI/CD</h3>
+            <p class="mt-2 text-stone-600">
+              Set up automated deployments, Docker workflows, and infrastructure pipelines that scale with your team.
+            </p>
+          </div>
+          
+          <!-- Service 6 - CTA -->
+          <div class="service-card rounded-2xl bg-stone-900 text-white p-8 flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-bold">Need something else?</h3>
+              <p class="mt-2 text-stone-300">
+                Let's discuss your specific needs. I'm always open to interesting projects.
+              </p>
+            </div>
+            <a href="#contact" class="mt-6 inline-flex items-center gap-2 text-sm font-medium hover:underline">
+              <span>Start a conversation</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Experience (split) -->
+    <section id="experience" class="mt-8">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <h2 class="text-3xl md:text-4xl font-bold">Experience</h2>
+        <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <!-- Professional -->
+          <div>
+            <h3 class="text-xl font-semibold">Professional</h3>
+            <ol class="relative mt-5 border-l border-stone-200">
+              <li class="ml-4 pb-8">
+                <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
+                <time class="text-sm text-stone-500">Jul 2022–Present</time>
+                <h4 class="text-lg font-semibold mt-1">Full‑Stack & Cloud Engineer</h4>
+                <p class="text-stone-700 mt-2">
+                  <ul>
+                    <li>Built and optimized serverless data pipelines and microservices for IoT data on
+AWS, combining business logic with Infrastructure as Code.</li>
+<li>Modernized the team’s development workflow using Dockerized environments and
+CI/CD automation.</li>
+<li>Delivered end‑to‑end features covering backend services and frontend
+interfaces.</li></ul>
+                </p>
+              <li class="ml-4 pb-8">
+                <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
+                <time class="text-sm text-stone-500">2019–2021</time>
+                <h4 class="text-lg font-semibold mt-1">Freelance Web Developer</h4>
+                <p class="text-stone-700 mt-2">Planned, architected, developed, and supported multiple projects (auctions, webshops, CMS, payments, invoicing). Managed the full lifecycle from requirements to deployment and maintenance.</p>
+              </li>
+              <li class="ml-4">
+                <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
+                <time class="text-sm text-stone-500">2018</time>
+                <h4 class="text-lg font-semibold mt-1">Web Developer Intern — Lynx Solutions</h4>
+                <p class="text-stone-700 mt-2">Assisted with API design for a large user base. Gained hands‑on experience with Laravel, Node.js, and Socket.IO, and learned cloud deployment strategies.</p>
+              </li>
             </ol>
+          </div>
+          <!-- Education -->
+          <div>
+            <h3 class="text-xl font-semibold">Education</h3>
+            <ol class="relative mt-5 border-l border-stone-200">
+              <li class="ml-4 pb-8">
+                <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
+                <time class="text-sm text-stone-500">2020–2022</time>
+                <h4 class="text-lg font-semibold mt-1">MSc — EIT Digital Master School</h4>
+                <p class="text-stone-700 mt-2">Aalto University • University of Trento</p>
+                <p class="text-stone-700 mt-2">Major: Cloud & Network Infrastructures</p>
+                <p class="text-stone-700 mt-2">Minor: Innovation & Entrepreneurship</p>
+              </li>
+              <li class="ml-4">
+                <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
+                <time class="text-sm text-stone-500">2016–2019</time>
+                <h4 class="text-lg font-semibold mt-1">BSc — Babeș‑Bolyai University</h4>
+                <p class="text-stone-700 mt-2">Exchanges at Charles University (Prague) and Johannes Kepler University (Linz). HackTGM award for “Intelligence in Software”.</p>
+              </li>
+            </ol>
+          </div>
         </div>
-        <div class="flex-col border-t border-gray-900 w-3/4 lg:w-2/3 mx-auto pt-4 mt-32">
-            <p class="text-4xl mt-2" id="projects">
-                Projects
-            </p>
-            <p class="text-lg font-semibold mt-4">
-                Commercial projects
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
-                <div class="flex flex-col items-center border rounded p-4 hover:border-gray-400">
-                    <p class="text-lg font-semibold">
-                        Presentation
-                    </p>
-                    <p class="text-sm lg:text-justify mt-2">
-                        Company presentation websites, with landing page, CMS, multi-language, job application portal,
-                        blog, etc.
-                    </p>
-                </div>
-                <div class="flex flex-col items-center border rounded p-4 hover:border-gray-400">
-                    <p class="text-lg font-semibold">
-                        Webshop
-                    </p>
-                    <p class="text-sm lg:text-justify mt-2">
-                        Custom-made online shop platform for prescription safety glasses, where customers can configure
-                        their order.
-                    </p>
-                </div>
-                <div class="flex flex-col items-center border rounded p-4 hover:border-gray-400">
-                    <p class="text-lg font-semibold">
-                        Online auction
-                    </p>
-                    <p class="text-sm lg:text-justify mt-2">
-                        Project for an art gallery with online shop and auction platform.
-                    </p>
-                </div>
-            </div>
-            <p class="text-sm mt-2">
-                All our projects are custom-made for the clients, to facilitate a personalized experience and
-                optimal performance.
-                For further information, references, examples, and quotas please get in contact: <a
-                    href="mailto:laszlo@laszlo-nagy.com"
-                    class="text-indigo-600 hover:text-indigo-300">laszlo@laszlo-nagy.com</a>
-            </p>
-            <p class="text-lg font-semibold mt-6">
-                Open Source projects
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
-                <div class="border rounded hover:border-gray-400">
-                    <img src="images/network.png" alt="" class="object-cover w-full h-52 rounded-t">
-                    <div class="p-4 flex flex-col items-center justify-between">
-                        <div>
-                            <p class="text-lg font-semibold text-center">
-                                Automated Network Deployment
-                            </p>
-                            <p class="text-sm lg:text-justify mt-2">
-                                Python based script that generates a Vagrant configuration file based on user input to
-                                create a
-                                network topology with virtual machines, switches and routers with configurable bandwidth
-                                and
-                                network delay.
-                            </p>
-                        </div>
-                        <a href="https://github.com/nlacko97/automated-vagrant-network-deployment" target="_blank"
-                            class="text-indigo-600 hover:text-indigo-300 text-sm">see on github</a>
-                    </div>
-                </div>
-                <div class="border rounded hover:border-gray-400">
-                    <img src="images/whiteboard.png" alt="" class="object-cover w-full h-52 rounded-t">
-                    <div class="p-4 flex flex-col items-center justify-between h+full">
-                        <div>
-                            <p class="text-lg font-semibold text-center">
-                                Collaborative Whiteboard
-                            </p>
-                            <p class="text-sm lg:text-justify mt-2">
-                                Whiteboard application where users can interact in real-time. Features include drawing,
-                                sticky notes, image upload, and many others. Implemented with NodeJS and SocketIO.
-                            </p>
-                        </div>
-                        <a href="https://github.com/nlacko97/collaborative-whiteboard" target="_blank"
-                            class="text-indigo-600 hover:text-indigo-300 text-sm">see on github</a>
-                    </div>
-                </div>
-                <div class="border rounded hover:border-gray-400">
-                    <img src="images/covidtracker.png" alt="" class="object-cover w-full h-52 rounded-t">
-                    <div class="p-4 flex flex-col items-center justify-between h-auto">
-                        <div>
-                            <p class="text-lg font-semibold text-center">
-                                COVID-19 Tracker
-                            </p>
-                            <p class="text-sm lg:text-justify mt-2">
-                                Interactive dashboard, aggregating COVID-19 data and displaying it in trend visualizing
-                                graphs, for the whole world and each country. Developed with the Laravel framework,
-                                deployed on AWS EC2.
-                            </p>
-                        </div>
-                        <a href="https://github.com/nlacko97/covid19-tracker" target="_blank"
-                            class="text-indigo-600 hover:text-indigo-300 text-sm">see on github</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex-col border-t border-gray-900 w-2/3 mx-auto pt-4 mt-32">
-            <p class="text-4xl mt-2" id="contact">
-                Get in touch
-            </p>
-            <div class="flex flex-col lg:flex-row mt-4 mb-10 w-full">
-                <div class="border rounded lg:w-1/2">
-                    <form action="https://formspree.io/f/xrgjlldy" method="POST" class="flex flex-col p-4">
-                        <div class="mb-6">
-                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your
-                                email</label>
-                            <input type="email" id="email" name="email"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                placeholder="Your e-mail" required>
-                        </div>
-                        <div class="mb-6">
-                            <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Your
-                                message</label>
-                            <textarea id="message" rows="4" name="message"
-                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500q"
-                                placeholder="What can I do for you?" required></textarea>
-                        </div>
-                        <button type="submit"
-                            class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Send</button>
+      </div>
+    </section>
 
-                    </form>
-                </div>
-                <div>
-                    <p class="text-indigo-400 font-semibold pl-6 mt-6 lg:mt-0">
-                        Alternatively, you can reach me through: <br> <br>
-                        📨<a href="mailto:laszlo@laszo-nagy.com"
-                            class="hover:underline hover:text-indigo-200 font-normal"> laszlo@laszlo-nagy.com</a> <br>
-                        📞<a href="tel:+40740015554" class="hover:underline hover:text-indigo-200 font-normal"> +40 740
-                            015 554</a>
-                    </p>
-                </div>
-            </div>
+     <!-- Skills -->
+    <section id="skills" class="mt-8">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <h2 class="text-3xl md:text-4xl font-bold">Technical Skills</h2>
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="rounded-2xl border border-stone-200 bg-white p-6">
+            <h3 class="font-semibold text-stone-900">Languages</h3>
+            <p class="mt-3 flex flex-wrap gap-2 text-sm">
+              <span class="rounded-full bg-stone-100 px-3 py-1">TypeScript</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">JavaScript</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Python</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">PHP</span>
+            </p>
+          </div>
+          <div class="rounded-2xl border border-stone-200 bg-white p-6">
+            <h3 class="font-semibold text-stone-900">Frontend</h3>
+            <p class="mt-3 flex flex-wrap gap-2 text-sm">
+              <span class="rounded-full bg-stone-100 px-3 py-1">Angular</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Vue.js</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Tailwind CSS</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">HTML/CSS</span>
+            </p>
+          </div>
+          <div class="rounded-2xl border border-stone-200 bg-white p-6">
+            <h3 class="font-semibold text-stone-900">Backend</h3>
+            <p class="mt-3 flex flex-wrap gap-2 text-sm">
+              <span class="rounded-full bg-stone-100 px-3 py-1">Node.js</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Laravel</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Symfony</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Socket.IO</span>
+            </p>
+          </div>
+          <div class="rounded-2xl border border-stone-200 bg-white p-6">
+            <h3 class="font-semibold text-stone-900">Cloud & Infrastructure</h3>
+            <p class="mt-3 flex flex-wrap gap-2 text-sm">
+              <span class="rounded-full bg-stone-100 px-3 py-1">AWS Lambda</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">API Gateway</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">S3</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">EC2</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">ECS</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Batch</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Cognito</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">SNS/SQS</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Step Functions</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Kinesis</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Glue</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Athena</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">QuickSight</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">CloudWatch</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Terraform</span>
+            </p>
+          </div>
+          <div class="rounded-2xl border border-stone-200 bg-white p-6">
+            <h3 class="font-semibold text-stone-900">Databases</h3>
+            <p class="mt-3 flex flex-wrap gap-2 text-sm">
+              <span class="rounded-full bg-stone-100 px-3 py-1">DynamoDB</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">PostgreSQL</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">MySQL</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">MongoDB</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Redis</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">RDS</span>
+            </p>
+          </div>
+          <div class="rounded-2xl border border-stone-200 bg-white p-6">
+            <h3 class="font-semibold text-stone-900">DevOps & Tools</h3>
+            <p class="mt-3 flex flex-wrap gap-2 text-sm">
+              <span class="rounded-full bg-stone-100 px-3 py-1">Docker</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Docker Compose</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">GitLab CI/CD</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Git</span>
+              <span class="rounded-full bg-stone-100 px-3 py-1">Serverless</span>
+            </p>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Journey (personal timeline) -->
+    <section id="journey" class="mt-8 border-t border-stone-200">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <h2 class="text-3xl md:text-4xl font-bold">Journey</h2>
+        <ol class="relative mt-8 border-l border-stone-200">
+          <li class="ml-4 pb-8">
+            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
+            <time class="text-sm text-stone-500">2016</time>
+            <h3 class="text-lg font-semibold mt-1">🎓 Started BSc in Computer Science</h3>
+            <p class="text-stone-700 mt-2">Babeș‑Bolyai University, Cluj‑Napoca.</p>
+          </li>
+          <li class="ml-4 pb-8">
+            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
+            <time class="text-sm text-stone-500">2017</time>
+            <h3 class="text-lg font-semibold mt-1">🐱‍💻HackTGM award — “Intelligence in Software”</h3>
+            <p class="text-stone-700 mt-2">Won the prize of "Intelligence in Software" at the HackTGM Hackathon with my colleagues. Later we collaborated with one of the partner companies to bring the product idea to life, kicking off my journey into web development.</p>
+          </li>
+          <li class="ml-4 pb-8">
+            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
+            <time class="text-sm text-stone-500">2018</time>
+            <h3 class="text-lg font-semibold mt-1">💻 Web Developer Internship — Lynx Solutions</h3>
+            <p class="text-stone-700 mt-2">API design, backend, frontend, CI/CD - working in a real productino setting, first taste of shipping to real users.</p>
+          </li>
+          <li class="ml-4 pb-8">
+            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
+            <time class="text-sm text-stone-500">2019</time>
+            <h3 class="text-lg font-semibold mt-1">🎓 BSc completed + Erasmus abroad</h3>
+            <p class="text-stone-700 mt-2">Charles University (Prague) and Johannes Kepler University (Linz).</p>
+          </li>
+          <li class="ml-4 pb-8">
+            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
+            <time class="text-sm text-stone-500">2019–2021</time>
+            <h3 class="text-lg font-semibold mt-1">🧰 Freelance builder</h3>
+            <p class="text-stone-700 mt-2">With a team of two, we built and shipped client products end‑to‑end: auctions, shops, payments, CMS. From requirements engineering to building, deployment and maintenance, we got a taste of what real building is like and how to manage projects efficiently.</p>
+          </li>
+          <li class="ml-4 pb-8">
+            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
+            <time class="text-sm text-stone-500">2020 - 2022</time>
+            <h3 class="text-lg font-semibold mt-1">📚 MSc — EIT Digital Cloud & Network Infrastructures</h3>
+            <p class="text-stone-700 mt-2">First year at Aalto University 🇫🇮 - deep dive into cloud foundations, network technologies, security, academic research.</p>
+            <p class="text-stone-700 mt-2">Second year at University of Trento 🇮🇹 - cloud computing, network security, big data, HPC.</p>
+            <p class="text-stone-700 mt-2">Minor in Innovation and Entrepreneurship - learning about building and scaling businesses, startups in the digital age.</p>
+          </li>
+          <li class="ml-4">
+            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
+            <time class="text-sm text-stone-500">2022–Present</time>
+            <h3 class="text-lg font-semibold mt-1">🚀 Full‑Stack & Cloud Engineer</h3>
+            <p class="text-stone-700 mt-2">Started as responbile for full-stack tasks, then moved more to microservices and cloud engineering. This is where I really found a passion for building scalable, maintainable, and secure systems.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+
+    <section id="work" class="mt-8 border-t border-stone-200">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex items-end justify-between">
+          <h2 class="text-3xl md:text-4xl font-bold">Fun on GitHub</h2>
+          <a href="https://github.com/nlacko97" target="_blank" rel="noreferrer" class="text-sm text-stone-600 hover:text-stone-900">More on GitHub →</a>
+        </div>
+        <ul class="mt-8 space-y-4">
+          <li class="rounded-2xl border border-stone-200 bg-white p-5">
+            <div class="flex items-start justify-between gap-6">
+              <div>
+                <h3 class="font-semibold">NBA Prediction App</h3>
+                <p class="mt-1 text-sm text-stone-700">App vote on NBA games and predict the winner. Backend on Supabase, Vue frontend.</p>
+              </div>
+              <a href="https://github.com/nlacko97/nba-pred-app" target="_blank" rel="noreferrer" class="text-sm text-stone-900 hover:opacity-80">Repo →</a>
+            </div>
+          </li>
+          <li class="rounded-2xl border border-stone-200 bg-white p-5">
+            <div class="flex items-start justify-between gap-6">
+              <div>
+                <h3 class="font-semibold">Automated Network Deployment</h3>
+                <p class="mt-1 text-sm text-stone-700">Python tooling to generate Vagrant configs for virtual network topologies (VMs, switches, routers) with configurable bandwidth/latency.</p>
+              </div>
+              <a href="https://github.com/nlacko97/automated-vagrant-network-deployment" target="_blank" rel="noreferrer" class="text-sm text-stone-900 hover:opacity-80">Repo →</a>
+            </div>
+          </li>
+          <li class="rounded-2xl border border-stone-200 bg-white p-5">
+            <div class="flex items-start justify-between gap-6">
+              <div>
+                <h3 class="font-semibold">Collaborative Whiteboard</h3>
+                <p class="mt-1 text-sm text-stone-700">Real‑time multi‑user whiteboard (drawing, notes, image upload). Built with Node.js and Socket.IO.</p>
+              </div>
+              <a href="https://github.com/nlacko97/collaborative-whiteboard" target="_blank" rel="noreferrer" class="text-sm text-stone-900 hover:opacity-80">Repo →</a>
+            </div>
+          </li>
+          <li class="rounded-2xl border border-stone-200 bg-white p-5">
+            <div class="flex items-start justify-between gap-6">
+              <div>
+                <h3 class="font-semibold">COVID‑19 Tracker</h3>
+                <p class="mt-1 text-sm text-stone-700">Interactive dashboard aggregating global data with trend visualizations. Laravel on AWS EC2.</p>
+              </div>
+              <a href="https://github.com/nlacko97/covid19-tracker" target="_blank" rel="noreferrer" class="text-sm text-stone-900 hover:opacity-80">Repo →</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+   
+
+    <!-- Contact -->
+    <section id="contact" class="mt-8 border-t border-stone-200">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold">Let’s talk</h2>
+            <p class="mt-4 text-stone-700">Tell me about your project, timeline, and what success looks like. I’ll get back to you with thoughtful next steps.</p>
+            <div class="mt-6 text-stone-700">
+              <p>Prefer email or a call?</p>
+              <p class="mt-2">📨 <a class="underline decoration-stone-300 underline-offset-4 hover:decoration-stone-500" href="mailto:laszlo@laszlo-nagy.com">laszlo@laszlo-nagy.com</a></p>
+              <p class="mt-1">📞 <a class="underline decoration-stone-300 underline-offset-4 hover:decoration-stone-500" href="tel:+40740015554">+40 740 015 554</a></p>
+            </div>
+          </div>
+          <div>
+            <form action="https://formspree.io/f/xrgjlldy" method="POST" class="rounded-2xl border border-stone-200 bg-white p-6">
+              <label for="email" class="block text-sm font-medium">Your email</label>
+              <input id="email" name="email" type="email" required placeholder="you@company.com" class="mt-2 w-full rounded-lg border border-stone-300 bg-white p-3 focus:outline-none focus:ring-2 focus:ring-stone-400">
+
+              <label for="message" class="mt-5 block text-sm font-medium">Your message</label>
+              <textarea id="message" name="message" rows="4" required placeholder="What can I help with?" class="mt-2 w-full rounded-lg border border-stone-300 bg-white p-3 focus:outline-none focus:ring-2 focus:ring-stone-400"></textarea>
+
+              <button type="submit" class="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-stone-900 px-5 py-2.5 text-white hover:bg-stone-800">
+                Send message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-stone-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between py-8 text-sm text-stone-600">
+        <p>© 2025. Built by <a href="https://laszlo-nagy.com" class="underline decoration-stone-300 underline-offset-4 hover:decoration-stone-500">László Nagy</a>.</p>
+        <div class="mt-3 md:mt-0 flex items-center gap-4">
+          <a href="mailto:laszlo@laszlo-nagy.com" aria-label="Email"><span class="sr-only">Email</span>📨</a>
+          <a href="https://www.linkedin.com/in/laszlonagy97" target="_blank" aria-label="LinkedIn" rel="noreferrer">in</a>
+          <a href="https://github.com/nlacko97" target="_blank" aria-label="GitHub" rel="noreferrer">GH</a>
+        </div>
+      </div>
     </div>
-    <footer class="p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-center md:p-6">
-        <span class="text-sm text-gray-500 sm:text-center">
-            © 2022. Built by <a href="https://laszlo-nagy.com" class="hover:underline">László Nagy</a>.
-        </span>
-    </footer>
-</body>
+  </footer>
 
+  <!-- Smooth Particle Effect Script -->
+  <script>
+    (function() {
+      // Only run on desktop
+      if (window.innerWidth < 768) return;
+
+      const canvas = document.getElementById('hero-canvas');
+      const heroSection = document.getElementById('hero-section');
+      if (!canvas || !heroSection) return;
+      
+      const ctx = canvas.getContext('2d');
+      
+      // Set canvas size
+      function resizeCanvas() {
+        canvas.width = heroSection.offsetWidth;
+        canvas.height = heroSection.offsetHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      // Smooth cursor tracking
+      let mouseX = canvas.width / 2;
+      let mouseY = canvas.height / 2;
+      let targetX = mouseX;
+      let targetY = mouseY;
+      let isHovering = false;
+
+      heroSection.addEventListener('mousemove', (e) => {
+        const rect = heroSection.getBoundingClientRect();
+        targetX = e.clientX - rect.left;
+        targetY = e.clientY - rect.top;
+        isHovering = true;
+      });
+
+      heroSection.addEventListener('mouseleave', () => {
+        isHovering = false;
+        targetX = canvas.width / 2;
+        targetY = canvas.height / 2;
+      });
+
+      // Particles with smoother physics
+      const particles = [];
+      const particleCount = 50;
+      const connectionDistance = 100;
+      const mouseInfluenceRadius = 180;
+
+      class Particle {
+        constructor() {
+          this.reset();
+        }
+
+        reset() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.baseX = this.x;
+          this.baseY = this.y;
+          this.size = Math.random() * 1.5 + 0.5;
+          this.vx = (Math.random() - 0.5) * 0.3;
+          this.vy = (Math.random() - 0.5) * 0.3;
+        }
+
+        update() {
+          // Gentle drift
+          this.baseX += this.vx;
+          this.baseY += this.vy;
+
+          // Wrap around edges smoothly
+          if (this.baseX < -20) this.baseX = canvas.width + 20;
+          if (this.baseX > canvas.width + 20) this.baseX = -20;
+          if (this.baseY < -20) this.baseY = canvas.height + 20;
+          if (this.baseY > canvas.height + 20) this.baseY = -20;
+
+          // Smooth attraction to cursor
+          const dx = mouseX - this.baseX;
+          const dy = mouseY - this.baseY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < mouseInfluenceRadius && isHovering) {
+            const force = (mouseInfluenceRadius - distance) / mouseInfluenceRadius;
+            const easing = force * force * 0.4; // Quadratic easing for smoother feel
+            this.x += (this.baseX + dx * easing - this.x) * 0.08;
+            this.y += (this.baseY + dy * easing - this.y) * 0.08;
+          } else {
+            // Smooth return to base position
+            this.x += (this.baseX - this.x) * 0.05;
+            this.y += (this.baseY - this.y) * 0.05;
+          }
+        }
+
+        draw() {
+          const opacity = 0.3;
+          ctx.fillStyle = `rgba(168, 162, 158, ${opacity})`;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // Initialize particles
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+
+      // Animation loop
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Smooth cursor interpolation (slower = smoother)
+        mouseX += (targetX - mouseX) * 0.06;
+        mouseY += (targetY - mouseY) * 0.06;
+
+        // Update and draw particles
+        particles.forEach(particle => {
+          particle.update();
+          particle.draw();
+        });
+
+        // Draw connections with smooth opacity
+        ctx.lineWidth = 0.5;
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < connectionDistance) {
+              const opacity = (1 - distance / connectionDistance) * 0.15;
+              ctx.strokeStyle = `rgba(168, 162, 158, ${opacity})`;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[j].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    })();
+  </script>
+
+  <!-- Dark mode toggle script -->
+  <script>
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('darkMode', isDark);
+      });
+    }
+  </script>
+</body>
 </html>
