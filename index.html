@@ -14,52 +14,31 @@
     function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-T0NL73SZBT');
   </script>
   <style>
-    /* Dark mode variables */
-    :root {
-      --bg-primary: #fafaf9;
-      --bg-secondary: #ffffff;
-      --text-primary: #1c1917;
-      --text-secondary: #57534e;
-      --text-muted: #a8a29e;
-      --border-color: #e7e5e4;
-      --accent: #1c1917;
-      --accent-hover: #292524;
+    /* Fade in animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    
-    html.dark {
-      --bg-primary: #0c0a09;
-      --bg-secondary: #1c1917;
-      --text-primary: #fafaf9;
-      --text-secondary: #d6d3d1;
-      --text-muted: #78716c;
-      --border-color: #292524;
-      --accent: #fafaf9;
-      --accent-hover: #e7e5e4;
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s ease-out forwards;
     }
-    
-    body {
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
-      transition: background-color 0.3s ease, color 0.3s ease;
+    .delay-100 { animation-delay: 0.1s; opacity: 0; }
+    .delay-200 { animation-delay: 0.2s; opacity: 0; }
+    .delay-300 { animation-delay: 0.3s; opacity: 0; }
+    .delay-400 { animation-delay: 0.4s; opacity: 0; }
+
+    /* Service card hover effect */
+    html.dark .service-card:hover {
+      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.4);
     }
-    
-    /* Dark mode overrides */
-    html.dark .bg-stone-50 { background-color: var(--bg-primary); }
-    html.dark .bg-white { background-color: var(--bg-secondary); }
-    html.dark .bg-white\/80 { background-color: rgba(28, 25, 23, 0.8); }
-    html.dark .text-stone-900 { color: var(--text-primary); }
-    html.dark .text-stone-700 { color: var(--text-secondary); }
-    html.dark .text-stone-600 { color: var(--text-secondary); }
-    html.dark .text-stone-500 { color: var(--text-muted); }
-    html.dark .border-stone-200 { border-color: var(--border-color); }
-    html.dark .border-stone-300 { border-color: var(--border-color); }
-    html.dark .ring-stone-200 { --tw-ring-color: var(--border-color); }
-    html.dark .bg-stone-100 { background-color: #292524; }
-    html.dark .bg-stone-900 { background-color: var(--accent); color: #0c0a09; }
-    html.dark .hover\:bg-stone-800:hover { background-color: var(--accent-hover); }
-    html.dark .hover\:bg-stone-100:hover { background-color: #292524; }
-    html.dark canvas { opacity: 0.7; }
-    
+    .service-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
+    }
+  
     /* Fade in animations */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -73,16 +52,15 @@
     .delay-300 { animation-delay: 0.3s; opacity: 0; }
     .delay-400 { animation-delay: 0.4s; opacity: 0; }
     
-    /* Service card hover effect */
+    html.dark .service-card:hover {
+      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.4);
+    }
     .service-card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .service-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
-    }
-    html.dark .service-card:hover {
-      box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.4);
     }
   </style>
   <script>
@@ -101,26 +79,26 @@
     }
   </script>
 </head>
-<body class="bg-stone-50 text-stone-900 antialiased font-Karla">
+<body class="bg-stone-50 text-stone-900 dark:bg-dm-bg dark:text-dm-text-primary antialiased font-Karla">
   <!-- Site Header -->
-  <header class="fixed inset-x-0 top-0 z-40 bg-white/80 backdrop-blur border-b border-stone-200">
+  <header class="fixed inset-x-0 top-0 z-40 bg-white/80 dark:bg-dm-surface/80 backdrop-blur border-b border-stone-200 dark:border-dm-border">
     <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
         <a href="#home" class="text-xl font-bold tracking-tight hover:opacity-90 transition" aria-label="Go to home">
           László Nagy
         </a>
         <div class="hidden md:flex items-center gap-6 text-sm">
-          <a href="#about" class="text-stone-600 hover:text-stone-900 transition">About</a>
-          <a href="#services" class="text-stone-600 hover:text-stone-900 transition">Services</a>
-          <a href="#experience" class="text-stone-600 hover:text-stone-900 transition">Experience</a>
-          <a href="#skills" class="text-stone-600 hover:text-stone-900 transition">Skills</a>
-          <a href="#work" class="text-stone-600 hover:text-stone-900 transition">Projects</a>
+          <a href="#about" class="text-stone-600 dark:text-dm-text-secondary hover:text-stone-900 dark:hover:text-dm-text-primary transition">About</a>
+          <a href="#services" class="text-stone-600 dark:text-dm-text-secondary hover:text-stone-900 dark:hover:text-dm-text-primary transition">Services</a>
+          <a href="#experience" class="text-stone-600 dark:text-dm-text-secondary hover:text-stone-900 dark:hover:text-dm-text-primary transition">Experience</a>
+          <a href="#skills" class="text-stone-600 dark:text-dm-text-secondary hover:text-stone-900 dark:hover:text-dm-text-primary transition">Skills</a>
+          <a href="#work" class="text-stone-600 dark:text-dm-text-secondary hover:text-stone-900 dark:hover:text-dm-text-primary transition">Projects</a>
           <!-- Dark mode toggle -->
-          <button id="dark-mode-toggle" class="p-2 rounded-full hover:bg-stone-100 transition" aria-label="Toggle dark mode">
+          <button id="dark-mode-toggle" class="p-2 rounded-full hover:bg-stone-100 dark:hover:bg-stone-800 transition" aria-label="Toggle dark mode">
             <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
             <svg class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
           </button>
-          <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-stone-900 text-white px-4 py-2 hover:bg-stone-800 transition">
+          <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-stone-900 dark:bg-dm-accent text-white dark:text-dm-bg px-4 py-2 hover:bg-stone-800 dark:hover:bg-dm-accent-hover transition">
             <span>Get in Touch</span>
           </a>
         </div>
@@ -132,36 +110,36 @@
     <!-- Hero -->
     <section id="hero-section" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
       <!-- Particle Canvas -->
-      <canvas id="hero-canvas" class="absolute inset-0 pointer-events-none" style="z-index: 1;"></canvas>
+      <canvas id="hero-canvas" class="absolute inset-0 pointer-events-none dark:opacity-70" style="z-index: 1;"></canvas>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center py-16 md:py-24 relative" style="z-index: 2;">
         <div>
-          <p class="text-sm uppercase tracking-widest text-stone-500 animate-fade-in-up">Full-Stack Software Engineer & Cloud Architect</p>
+          <p class="text-sm uppercase tracking-widest text-stone-500 dark:text-dm-text-muted animate-fade-in-up">Full-Stack Software Engineer & Cloud Architect</p>
           <h1 class="mt-4 text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in-up delay-100">
             Driving innovation with cloud architecture and modern tech
           </h1>
-          <p class="mt-6 text-stone-600 text-lg md:text-xl leading-relaxed animate-fade-in-up delay-200">
+          <p class="mt-6 text-stone-600 dark:text-dm-text-secondary text-lg md:text-xl leading-relaxed animate-fade-in-up delay-200">
             I help businesses leverage cutting-edge cloud solutions, serverless architectures, and AI to build scalable, production-ready systems. From AWS infrastructure to full-stack applications—real-world experience that drives results.
           </p>
           <div class="mt-8 flex flex-wrap gap-3 animate-fade-in-up delay-300">
-            <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-stone-900 text-white px-6 py-3 hover:bg-stone-800 transition-all hover:scale-105">
+            <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-stone-900 dark:bg-dm-accent text-white dark:text-dm-bg px-6 py-3 hover:bg-stone-800 dark:hover:bg-dm-accent-hover transition-all hover:scale-105">
               <span>Let's Talk</span>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
             </a>
-            <a href="public/laszlo-nagy-cv.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full border border-stone-300 px-6 py-3 hover:bg-stone-100 transition-all hover:border-stone-400">
+            <a href="public/laszlo-nagy-cv.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full border border-stone-300 dark:border-dm-border px-6 py-3 hover:bg-stone-100 dark:hover:bg-stone-800 transition-all hover:border-stone-400 dark:hover:border-stone-700">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 16a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L11 12.586V4a1 1 0 1 1 2 0v8.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 12 16Z"/><path d="M5 20a1 1 0 1 1 0-2h14a1 1 0 1 1 0 2H5Z"/></svg>
               <span>CV</span>
             </a>
-            <a href="https://www.linkedin.com/in/laszlonagy97" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-stone-300 hover:bg-stone-100 transition-all hover:border-stone-400" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/laszlonagy97" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-stone-300 dark:border-dm-border hover:bg-stone-100 dark:hover:bg-stone-800 transition-all hover:border-stone-400 dark:hover:border-stone-700" aria-label="LinkedIn">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M4.983 3.5A2.483 2.483 0 0 0 2.5 5.983v12.034A2.483 2.483 0 0 0 4.983 20.5h12.034A2.483 2.483 0 0 0 19.5 18.017V5.983A2.483 2.483 0 0 0 17.017 3.5H4.983ZM8.25 9.75v7.5h-2.5v-7.5h2.5Zm-.125-3.125a1.375 1.375 0 1 1-2.75 0 1.375 1.375 0 0 1 2.75 0ZM12.25 17.25h-2.5v-7.5h2.4v1.026h.035c.334-.61 1.153-1.252 2.375-1.252 2.546 0 3.065 1.677 3.065 3.859v3.867h-2.5V14.75c0-.596-.01-1.364-.83-1.364-.832 0-.959.65-.959 1.321v2.543Z"/></svg>
             </a>
-            <a href="https://github.com/nlacko97" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-stone-300 hover:bg-stone-100 transition-all hover:border-stone-400" aria-label="GitHub">
+            <a href="https://github.com/nlacko97" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-stone-300 dark:border-dm-border hover:bg-stone-100 dark:hover:bg-stone-800 transition-all hover:border-stone-400 dark:hover:border-stone-700" aria-label="GitHub">
               <svg viewBox="0 0 24 24" aria-hidden="true" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12.3c0 5.22 3.39 9.64 8.1 11.2.6.11.82-.27.82-.58 0-.29-.01-1.06-.02-2.08-3.29.73-3.99-1.62-3.99-1.62-.54-1.4-1.32-1.77-1.32-1.77-1.08-.76.08-.74.08-.74 1.2.09 1.83 1.26 1.83 1.26 1.06 1.87 2.77 1.33 3.44 1.02.11-.8.42-1.33.77-1.64-2.63-.31-5.39-1.36-5.39-6.06 0-1.34.46-2.43 1.22-3.29-.12-.31-.53-1.56.12-3.25 0 0 1-.33 3.3 1.26.95-.27 1.97-.4 2.98-.41 1.01 0 2.03.14 2.98.41 2.29-1.6 3.29-1.26 3.29-1.26.65 1.69.24 2.94.12 3.25.76.86 1.22 1.95 1.22 3.29 0 4.71-2.77 5.74-5.41 6.05.43.38.81 1.12.81 2.26 0 1.63-.02 2.95-.02 3.35 0 .31.22.69.83.57a11.5 11.5 0 0 0 8.09-11.2C23.5 6.27 18.73.5 12 .5Z"/></svg>
             </a>
           </div>
         </div>
         <div class="relative animate-fade-in-up delay-400">
-          <img src="images/hero.jpg" alt="Portrait of László" class="w-full h-[460px] object-cover rounded-3xl shadow-2xl ring-1 ring-stone-200">
+          <img src="images/hero.jpg" alt="Portrait of László" class="w-full h-[460px] object-cover rounded-3xl shadow-2xl ring-1 ring-stone-200 dark:ring-dm-border">
         </div>
       </div>
     </section>
@@ -171,24 +149,24 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
         <!-- Section header -->
         <div class="text-center max-w-2xl mx-auto">
-          <p class="text-sm uppercase tracking-widest text-stone-500">About Me</p>
+          <p class="text-sm uppercase tracking-widest text-stone-500 dark:text-dm-text-muted">About Me</p>
           <h2 class="mt-3 text-3xl md:text-4xl font-bold">
             Full-Stack Engineer. Cloud Architect. Innovation Driver.
           </h2>
-          <p class="mt-4 text-stone-600 text-lg">
+          <p class="mt-4 text-stone-600 dark:text-dm-text-secondary text-lg">
             Transforming business challenges into scalable cloud solutions with proven expertise from real-world projects.
           </p>
         </div>
-        
+
         <!-- Bento grid layout -->
         <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- Main intro card - spans 2 columns -->
-          <div class="lg:col-span-2 rounded-3xl bg-white border border-stone-200 p-8 md:p-10">
-            <p class="text-lg md:text-xl text-stone-700 leading-relaxed">
-              I'm a <strong class="text-stone-900">full-stack software engineer</strong> specializing in <strong class="text-stone-900">cloud architecture and AWS serverless systems</strong>. With hands-on experience from real production environments, I help businesses modernize infrastructure, build scalable data pipelines, and ship features faster.
+          <div class="lg:col-span-2 rounded-3xl bg-white dark:bg-dm-surface border border-stone-200 dark:border-dm-border p-8 md:p-10">
+            <p class="text-lg md:text-xl text-stone-700 dark:text-dm-text-secondary leading-relaxed">
+              I'm a <strong class="text-stone-900 dark:text-dm-text-primary">full-stack software engineer</strong> specializing in <strong class="text-stone-900 dark:text-dm-text-primary">cloud architecture and AWS serverless systems</strong>. With hands-on experience from real production environments, I help businesses modernize infrastructure, build scalable data pipelines, and ship features faster.
             </p>
-            <p class="mt-4 text-lg md:text-xl text-stone-700 leading-relaxed">
-              From <strong class="text-stone-900">IoT data processing</strong> to <strong class="text-stone-900">end-to-end web applications</strong>, I combine deep technical expertise with a pragmatic approach to innovation. I've worked across Europe, delivering solutions that leverage <strong class="text-stone-900">modern tech stacks, AI capabilities, and Infrastructure as Code</strong> to drive business outcomes.
+            <p class="mt-4 text-lg md:text-xl text-stone-700 dark:text-dm-text-secondary leading-relaxed">
+              From <strong class="text-stone-900 dark:text-dm-text-primary">IoT data processing</strong> to <strong class="text-stone-900 dark:text-dm-text-primary">end-to-end web applications</strong>, I combine deep technical expertise with a pragmatic approach to innovation. I've worked across Europe, delivering solutions that leverage <strong class="text-stone-900 dark:text-dm-text-primary">modern tech stacks, AI capabilities, and Infrastructure as Code</strong> to drive business outcomes.
             </p>
             <!-- <div class="mt-8 flex flex-wrap gap-3">
               <span class="inline-flex items-center gap-2 rounded-full bg-stone-100 px-4 py-2 text-sm font-medium text-stone-700">
@@ -277,76 +255,76 @@
     <section id="services" class="border-t border-stone-200">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
         <div class="text-center max-w-2xl mx-auto">
-          <p class="text-sm uppercase tracking-widest text-stone-500">How I Can Help</p>
+          <p class="text-sm uppercase tracking-widest text-stone-500 dark:text-dm-text-muted">How I Can Help</p>
           <h2 class="mt-3 text-3xl md:text-4xl font-bold">
             Engineering & Consulting Services
           </h2>
-          <p class="mt-4 text-stone-600 text-lg">
+          <p class="mt-4 text-stone-600 dark:text-dm-text-secondary text-lg">
             Whether you're a startup building your MVP or an established company scaling your infrastructure, I can help.
           </p>
         </div>
-        
+
         <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- Service 1 -->
-          <div class="service-card rounded-2xl bg-white border border-stone-200 p-8">
-            <div class="w-12 h-12 rounded-xl bg-stone-900 text-white flex items-center justify-center text-xl">
+          <div class="service-card rounded-2xl bg-white dark:bg-dm-surface border border-stone-200 dark:border-dm-border p-8">
+            <div class="w-12 h-12 rounded-xl bg-stone-900 dark:bg-dm-accent text-white dark:text-dm-bg flex items-center justify-center text-xl">
               ☁️
             </div>
-            <h3 class="mt-4 text-lg font-bold text-stone-900">Cloud Architecture</h3>
-            <p class="mt-2 text-stone-600">
+            <h3 class="mt-4 text-lg font-bold text-stone-900 dark:text-dm-text-primary">Cloud Architecture</h3>
+            <p class="mt-2 text-stone-600 dark:text-dm-text-secondary">
               Design and implement scalable AWS infrastructure using serverless, containers, and IaC (Terraform).
             </p>
           </div>
-          
+
           <!-- Service 2 -->
-          <div class="service-card rounded-2xl bg-white border border-stone-200 p-8">
-            <div class="w-12 h-12 rounded-xl bg-stone-900 text-white flex items-center justify-center text-xl">
+          <div class="service-card rounded-2xl bg-white dark:bg-dm-surface border border-stone-200 dark:border-dm-border p-8">
+            <div class="w-12 h-12 rounded-xl bg-stone-900 dark:bg-dm-accent text-white dark:text-dm-bg flex items-center justify-center text-xl">
               🔧
             </div>
-            <h3 class="mt-4 text-lg font-bold text-stone-900">Full-Stack Development</h3>
-            <p class="mt-2 text-stone-600">
+            <h3 class="mt-4 text-lg font-bold text-stone-900 dark:text-dm-text-primary">Full-Stack Development</h3>
+            <p class="mt-2 text-stone-600 dark:text-dm-text-secondary">
               Build complete web applications from database to UI. TypeScript, Node.js, Vue/Angular, and modern tooling.
             </p>
           </div>
-          
+
           <!-- Service 3 -->
-          <div class="service-card rounded-2xl bg-white border border-stone-200 p-8">
-            <div class="w-12 h-12 rounded-xl bg-stone-900 text-white flex items-center justify-center text-xl">
+          <div class="service-card rounded-2xl bg-white dark:bg-dm-surface border border-stone-200 dark:border-dm-border p-8">
+            <div class="w-12 h-12 rounded-xl bg-stone-900 dark:bg-dm-accent text-white dark:text-dm-bg flex items-center justify-center text-xl">
               🚀
             </div>
-            <h3 class="mt-4 text-lg font-bold text-stone-900">MVP Development</h3>
-            <p class="mt-2 text-stone-600">
+            <h3 class="mt-4 text-lg font-bold text-stone-900 dark:text-dm-text-primary">MVP Development</h3>
+            <p class="mt-2 text-stone-600 dark:text-dm-text-secondary">
               Turn your idea into a working product. Fast iteration, pragmatic architecture, launch-ready code.
             </p>
           </div>
-          
+
           <!-- Service 4 -->
-          <div class="service-card rounded-2xl bg-white border border-stone-200 p-8">
-            <div class="w-12 h-12 rounded-xl bg-stone-900 text-white flex items-center justify-center text-xl">
+          <div class="service-card rounded-2xl bg-white dark:bg-dm-surface border border-stone-200 dark:border-dm-border p-8">
+            <div class="w-12 h-12 rounded-xl bg-stone-900 dark:bg-dm-accent text-white dark:text-dm-bg flex items-center justify-center text-xl">
               📊
             </div>
-            <h3 class="mt-4 text-lg font-bold text-stone-900">Data Pipelines</h3>
-            <p class="mt-2 text-stone-600">
+            <h3 class="mt-4 text-lg font-bold text-stone-900 dark:text-dm-text-primary">Data Pipelines</h3>
+            <p class="mt-2 text-stone-600 dark:text-dm-text-secondary">
               Design data flows using AWS Lambda, Step Functions, Kinesis, and other serverless services.
             </p>
           </div>
-          
+
           <!-- Service 5 -->
-          <div class="service-card rounded-2xl bg-white border border-stone-200 p-8">
-            <div class="w-12 h-12 rounded-xl bg-stone-900 text-white flex items-center justify-center text-xl">
+          <div class="service-card rounded-2xl bg-white dark:bg-dm-surface border border-stone-200 dark:border-dm-border p-8">
+            <div class="w-12 h-12 rounded-xl bg-stone-900 dark:bg-dm-accent text-white dark:text-dm-bg flex items-center justify-center text-xl">
               ⚙️
             </div>
-            <h3 class="mt-4 text-lg font-bold text-stone-900">DevOps & CI/CD</h3>
-            <p class="mt-2 text-stone-600">
+            <h3 class="mt-4 text-lg font-bold text-stone-900 dark:text-dm-text-primary">DevOps & CI/CD</h3>
+            <p class="mt-2 text-stone-600 dark:text-dm-text-secondary">
               Set up automated deployments, Docker workflows, and infrastructure pipelines that scale with your team.
             </p>
           </div>
-          
+
           <!-- Service 6 - CTA -->
-          <div class="service-card rounded-2xl bg-stone-900 text-white p-8 flex flex-col justify-between">
+          <div class="service-card rounded-2xl bg-stone-900 dark:bg-dm-accent text-white dark:text-dm-bg p-8 flex flex-col justify-between">
             <div>
               <h3 class="text-lg font-bold">Need something else?</h3>
-              <p class="mt-2 text-stone-300">
+              <p class="mt-2 text-stone-300 dark:text-stone-700">
                 Let's discuss your specific needs. I'm always open to interesting projects.
               </p>
             </div>
@@ -368,51 +346,51 @@
           <!-- Professional -->
           <div>
             <h3 class="text-xl font-semibold">Professional</h3>
-            <ol class="relative mt-5 border-l border-stone-200">
+            <ol class="relative mt-5 border-l border-stone-200 dark:border-dm-border">
               <li class="ml-4 pb-8">
-                <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
-                <time class="text-sm text-stone-500">Jul 2022–Present</time>
+                <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300 dark:bg-stone-600"></div>
+                <time class="text-sm text-stone-500 dark:text-dm-text-muted">Jul 2022–Present</time>
                 <h4 class="text-lg font-semibold mt-1">Full‑Stack & Cloud Engineer</h4>
-                <p class="text-stone-700 mt-2">
+                <p class="text-stone-700 dark:text-dm-text-secondary mt-2">
                   <ul>
                     <li>Built and optimized serverless data pipelines and microservices for IoT data on
 AWS, combining business logic with Infrastructure as Code.</li>
-<li>Modernized the team’s development workflow using Dockerized environments and
+<li>Modernized the team's development workflow using Dockerized environments and
 CI/CD automation.</li>
 <li>Delivered end‑to‑end features covering backend services and frontend
 interfaces.</li></ul>
                 </p>
               <li class="ml-4 pb-8">
-                <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
-                <time class="text-sm text-stone-500">2019–2021</time>
+                <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300 dark:bg-stone-600"></div>
+                <time class="text-sm text-stone-500 dark:text-dm-text-muted">2019–2021</time>
                 <h4 class="text-lg font-semibold mt-1">Freelance Web Developer</h4>
-                <p class="text-stone-700 mt-2">Planned, architected, developed, and supported multiple projects (auctions, webshops, CMS, payments, invoicing). Managed the full lifecycle from requirements to deployment and maintenance.</p>
+                <p class="text-stone-700 dark:text-dm-text-secondary mt-2">Planned, architected, developed, and supported multiple projects (auctions, webshops, CMS, payments, invoicing). Managed the full lifecycle from requirements to deployment and maintenance.</p>
               </li>
               <li class="ml-4">
-                <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
-                <time class="text-sm text-stone-500">2018</time>
+                <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300 dark:bg-stone-600"></div>
+                <time class="text-sm text-stone-500 dark:text-dm-text-muted">2018</time>
                 <h4 class="text-lg font-semibold mt-1">Web Developer Intern — Lynx Solutions</h4>
-                <p class="text-stone-700 mt-2">Assisted with API design for a large user base. Gained hands‑on experience with Laravel, Node.js, and Socket.IO, and learned cloud deployment strategies.</p>
+                <p class="text-stone-700 dark:text-dm-text-secondary mt-2">Assisted with API design for a large user base. Gained hands‑on experience with Laravel, Node.js, and Socket.IO, and learned cloud deployment strategies.</p>
               </li>
             </ol>
           </div>
           <!-- Education -->
           <div>
             <h3 class="text-xl font-semibold">Education</h3>
-            <ol class="relative mt-5 border-l border-stone-200">
+            <ol class="relative mt-5 border-l border-stone-200 dark:border-dm-border">
               <li class="ml-4 pb-8">
-                <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
-                <time class="text-sm text-stone-500">2020–2022</time>
+                <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300 dark:bg-stone-600"></div>
+                <time class="text-sm text-stone-500 dark:text-dm-text-muted">2020–2022</time>
                 <h4 class="text-lg font-semibold mt-1">MSc — EIT Digital Master School</h4>
-                <p class="text-stone-700 mt-2">Aalto University • University of Trento</p>
-                <p class="text-stone-700 mt-2">Major: Cloud & Network Infrastructures</p>
-                <p class="text-stone-700 mt-2">Minor: Innovation & Entrepreneurship</p>
+                <p class="text-stone-700 dark:text-dm-text-secondary mt-2">Aalto University • University of Trento</p>
+                <p class="text-stone-700 dark:text-dm-text-secondary mt-2">Major: Cloud & Network Infrastructures</p>
+                <p class="text-stone-700 dark:text-dm-text-secondary mt-2">Minor: Innovation & Entrepreneurship</p>
               </li>
               <li class="ml-4">
-                <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
-                <time class="text-sm text-stone-500">2016–2019</time>
+                <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300 dark:bg-stone-600"></div>
+                <time class="text-sm text-stone-500 dark:text-dm-text-muted">2016–2019</time>
                 <h4 class="text-lg font-semibold mt-1">BSc — Babeș‑Bolyai University</h4>
-                <p class="text-stone-700 mt-2">Exchanges at Charles University (Prague) and Johannes Kepler University (Linz). HackTGM award for “Intelligence in Software”.</p>
+                <p class="text-stone-700 dark:text-dm-text-secondary mt-2">Exchanges at Charles University (Prague) and Johannes Kepler University (Linz). HackTGM award for "Intelligence in Software".</p>
               </li>
             </ol>
           </div>
@@ -425,72 +403,72 @@ interfaces.</li></ul>
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <h2 class="text-3xl md:text-4xl font-bold">Technical Skills</h2>
         <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="rounded-2xl border border-stone-200 bg-white p-6">
-            <h3 class="font-semibold text-stone-900">Languages</h3>
+          <div class="rounded-2xl border border-stone-200 dark:border-dm-border bg-white dark:bg-dm-surface p-6">
+            <h3 class="font-semibold text-stone-900 dark:text-dm-text-primary">Languages</h3>
             <p class="mt-3 flex flex-wrap gap-2 text-sm">
-              <span class="rounded-full bg-stone-100 px-3 py-1">TypeScript</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">JavaScript</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Python</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">PHP</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">TypeScript</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">JavaScript</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Python</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">PHP</span>
             </p>
           </div>
-          <div class="rounded-2xl border border-stone-200 bg-white p-6">
-            <h3 class="font-semibold text-stone-900">Frontend</h3>
+          <div class="rounded-2xl border border-stone-200 dark:border-dm-border bg-white dark:bg-dm-surface p-6">
+            <h3 class="font-semibold text-stone-900 dark:text-dm-text-primary">Frontend</h3>
             <p class="mt-3 flex flex-wrap gap-2 text-sm">
-              <span class="rounded-full bg-stone-100 px-3 py-1">Angular</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Vue.js</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Tailwind CSS</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">HTML/CSS</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Angular</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Vue.js</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Tailwind CSS</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">HTML/CSS</span>
             </p>
           </div>
-          <div class="rounded-2xl border border-stone-200 bg-white p-6">
-            <h3 class="font-semibold text-stone-900">Backend</h3>
+          <div class="rounded-2xl border border-stone-200 dark:border-dm-border bg-white dark:bg-dm-surface p-6">
+            <h3 class="font-semibold text-stone-900 dark:text-dm-text-primary">Backend</h3>
             <p class="mt-3 flex flex-wrap gap-2 text-sm">
-              <span class="rounded-full bg-stone-100 px-3 py-1">Node.js</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Laravel</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Symfony</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Socket.IO</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Node.js</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Laravel</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Symfony</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Socket.IO</span>
             </p>
           </div>
-          <div class="rounded-2xl border border-stone-200 bg-white p-6">
-            <h3 class="font-semibold text-stone-900">Cloud & Infrastructure</h3>
+          <div class="rounded-2xl border border-stone-200 dark:border-dm-border bg-white dark:bg-dm-surface p-6">
+            <h3 class="font-semibold text-stone-900 dark:text-dm-text-primary">Cloud & Infrastructure</h3>
             <p class="mt-3 flex flex-wrap gap-2 text-sm">
-              <span class="rounded-full bg-stone-100 px-3 py-1">AWS Lambda</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">API Gateway</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">S3</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">EC2</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">ECS</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Batch</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Cognito</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">SNS/SQS</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Step Functions</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Kinesis</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Glue</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Athena</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">QuickSight</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">CloudWatch</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Terraform</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">AWS Lambda</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">API Gateway</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">S3</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">EC2</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">ECS</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Batch</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Cognito</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">SNS/SQS</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Step Functions</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Kinesis</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Glue</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Athena</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">QuickSight</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">CloudWatch</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Terraform</span>
             </p>
           </div>
-          <div class="rounded-2xl border border-stone-200 bg-white p-6">
-            <h3 class="font-semibold text-stone-900">Databases</h3>
+          <div class="rounded-2xl border border-stone-200 dark:border-dm-border bg-white dark:bg-dm-surface p-6">
+            <h3 class="font-semibold text-stone-900 dark:text-dm-text-primary">Databases</h3>
             <p class="mt-3 flex flex-wrap gap-2 text-sm">
-              <span class="rounded-full bg-stone-100 px-3 py-1">DynamoDB</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">PostgreSQL</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">MySQL</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">MongoDB</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Redis</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">RDS</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">DynamoDB</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">PostgreSQL</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">MySQL</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">MongoDB</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Redis</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">RDS</span>
             </p>
           </div>
-          <div class="rounded-2xl border border-stone-200 bg-white p-6">
-            <h3 class="font-semibold text-stone-900">DevOps & Tools</h3>
+          <div class="rounded-2xl border border-stone-200 dark:border-dm-border bg-white dark:bg-dm-surface p-6">
+            <h3 class="font-semibold text-stone-900 dark:text-dm-text-primary">DevOps & Tools</h3>
             <p class="mt-3 flex flex-wrap gap-2 text-sm">
-              <span class="rounded-full bg-stone-100 px-3 py-1">Docker</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Docker Compose</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">GitLab CI/CD</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Git</span>
-              <span class="rounded-full bg-stone-100 px-3 py-1">Serverless</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Docker</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Docker Compose</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">GitLab CI/CD</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Git</span>
+              <span class="rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1">Serverless</span>
             </p>
           </div>
         </div>
@@ -498,100 +476,101 @@ interfaces.</li></ul>
     </section>
 
     <!-- Journey (personal timeline) -->
-    <section id="journey" class="mt-8 border-t border-stone-200">
+    <section id="journey" class="mt-8 border-t border-stone-200 dark:border-stone-800">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <h2 class="text-3xl md:text-4xl font-bold">Journey</h2>
-        <ol class="relative mt-8 border-l border-stone-200">
+        <ol class="relative mt-8 border-l border-stone-200 dark:border-dm-border">
           <li class="ml-4 pb-8">
-            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
-            <time class="text-sm text-stone-500">2016</time>
+            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300 dark:bg-stone-600"></div>
+            <time class="text-sm text-stone-500 dark:text-dm-text-muted">2016</time>
             <h3 class="text-lg font-semibold mt-1">🎓 Started BSc in Computer Science</h3>
-            <p class="text-stone-700 mt-2">Babeș‑Bolyai University, Cluj‑Napoca.</p>
+            <p class="text-stone-700 dark:text-dm-text-secondary mt-2">Babeș‑Bolyai University, Cluj‑Napoca.</p>
           </li>
           <li class="ml-4 pb-8">
-            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
-            <time class="text-sm text-stone-500">2017</time>
-            <h3 class="text-lg font-semibold mt-1">🐱‍💻HackTGM award — “Intelligence in Software”</h3>
-            <p class="text-stone-700 mt-2">Won the prize of "Intelligence in Software" at the HackTGM Hackathon with my colleagues. Later we collaborated with one of the partner companies to bring the product idea to life, kicking off my journey into web development.</p>
+            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300 dark:bg-stone-600"></div>
+            <time class="text-sm text-stone-500 dark:text-dm-text-muted">2017</time>
+            <h3 class="text-lg font-semibold mt-1">🐱‍💻HackTGM award — "Intelligence in Software"</h3>
+            <p class="text-stone-700 dark:text-dm-text-secondary mt-2">Won the prize of "Intelligence in Software" at the HackTGM Hackathon with my colleagues. Later we collaborated with one of the partner companies to bring the product idea to life, kicking off my journey into web development.</p>
           </li>
           <li class="ml-4 pb-8">
-            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
-            <time class="text-sm text-stone-500">2018</time>
+            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300 dark:bg-stone-600"></div>
+            <time class="text-sm text-stone-500 dark:text-dm-text-muted">2018</time>
             <h3 class="text-lg font-semibold mt-1">💻 Web Developer Internship — Lynx Solutions</h3>
-            <p class="text-stone-700 mt-2">API design, backend, frontend, CI/CD - working in a real productino setting, first taste of shipping to real users.</p>
+            <p class="text-stone-700 dark:text-dm-text-secondary mt-2">API design, backend, frontend, CI/CD - working in a real productino setting, first taste of shipping to real users.</p>
           </li>
           <li class="ml-4 pb-8">
-            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
-            <time class="text-sm text-stone-500">2019</time>
+            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300 dark:bg-stone-600"></div>
+            <time class="text-sm text-stone-500 dark:text-dm-text-muted">2019</time>
             <h3 class="text-lg font-semibold mt-1">🎓 BSc completed + Erasmus abroad</h3>
-            <p class="text-stone-700 mt-2">Charles University (Prague) and Johannes Kepler University (Linz).</p>
+            <p class="text-stone-700 dark:text-dm-text-secondary mt-2">Charles University (Prague) and Johannes Kepler University (Linz).</p>
           </li>
           <li class="ml-4 pb-8">
-            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
-            <time class="text-sm text-stone-500">2019–2021</time>
+            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300 dark:bg-stone-600"></div>
+            <time class="text-sm text-stone-500 dark:text-dm-text-muted">2019–2021</time>
             <h3 class="text-lg font-semibold mt-1">🧰 Freelance builder</h3>
-            <p class="text-stone-700 mt-2">With a team of two, we built and shipped client products end‑to‑end: auctions, shops, payments, CMS. From requirements engineering to building, deployment and maintenance, we got a taste of what real building is like and how to manage projects efficiently.</p>
+            <p class="text-stone-700 dark:text-dm-text-secondary mt-2">With a team of two, we built and shipped client products end‑to‑end: auctions, shops, payments, CMS. From requirements engineering to building, deployment and maintenance, we got a taste of what real building is like and how to manage projects efficiently.</p>
           </li>
           <li class="ml-4 pb-8">
-            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
-            <time class="text-sm text-stone-500">2020 - 2022</time>
+            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300 dark:bg-stone-600"></div>
+            <time class="text-sm text-stone-500 dark:text-dm-text-muted">2020 - 2022</time>
             <h3 class="text-lg font-semibold mt-1">📚 MSc — EIT Digital Cloud & Network Infrastructures</h3>
-            <p class="text-stone-700 mt-2">First year at Aalto University 🇫🇮 - deep dive into cloud foundations, network technologies, security, academic research.</p>
-            <p class="text-stone-700 mt-2">Second year at University of Trento 🇮🇹 - cloud computing, network security, big data, HPC.</p>
-            <p class="text-stone-700 mt-2">Minor in Innovation and Entrepreneurship - learning about building and scaling businesses, startups in the digital age.</p>
+            <p class="text-stone-700 dark:text-dm-text-secondary mt-2">First year at Aalto University 🇫🇮 - deep dive into cloud foundations, network technologies, security, academic research.</p>
+            <p class="text-stone-700 dark:text-dm-text-secondary mt-2">Second year at University of Trento 🇮🇹 - cloud computing, network security, big data, HPC.</p>
+            <p class="text-stone-700 dark:text-dm-text-secondary mt-2">Minor in Innovation and Entrepreneurship - learning about building and scaling businesses, startups in the digital age.</p>
           </li>
           <li class="ml-4">
-            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300"></div>
-            <time class="text-sm text-stone-500">2022–Present</time>
+            <div class="absolute -left-1.5 mt-2 h-3 w-3 rounded-full bg-stone-300 dark:bg-stone-600"></div>
+            <time class="text-sm text-stone-500 dark:text-dm-text-muted">2022–Present</time>
             <h3 class="text-lg font-semibold mt-1">🚀 Full‑Stack & Cloud Engineer</h3>
-            <p class="text-stone-700 mt-2">Started as responbile for full-stack tasks, then moved more to microservices and cloud engineering. This is where I really found a passion for building scalable, maintainable, and secure systems.</p>
-          </li>
+            <p class="text-stone-700 dark:text-dm-text-secondary mt-2">Evolved from full-stack development into distributed systems and cloud architecture. Built serverless data pipelines and microservices that process millions of IoT events for a leading sports technology platform.</p>
+            <p class="text-stone-700 dark:text-dm-text-secondary mt-2">Architect and ship infrastructure improvements, optimize performance at scale, lead with cloud-native practices—turning technical challenges into reliable, production-grade systems.</p>
+            </li>
         </ol>
       </div>
     </section>
 
 
-    <section id="work" class="mt-8 border-t border-stone-200">
+    <section id="work" class="mt-8 border-t border-stone-200 dark:border-stone-800">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex items-end justify-between">
           <h2 class="text-3xl md:text-4xl font-bold">Fun on GitHub</h2>
-          <a href="https://github.com/nlacko97" target="_blank" rel="noreferrer" class="text-sm text-stone-600 hover:text-stone-900">More on GitHub →</a>
+          <a href="https://github.com/nlacko97" target="_blank" rel="noreferrer" class="text-sm text-stone-600 dark:text-dm-text-secondary hover:text-stone-900 dark:hover:text-dm-text-primary">More on GitHub →</a>
         </div>
         <ul class="mt-8 space-y-4">
-          <li class="rounded-2xl border border-stone-200 bg-white p-5">
+          <li class="rounded-2xl border border-stone-200 dark:border-dm-border bg-white dark:bg-dm-surface p-5">
             <div class="flex items-start justify-between gap-6">
               <div>
                 <h3 class="font-semibold">NBA Prediction App</h3>
-                <p class="mt-1 text-sm text-stone-700">App vote on NBA games and predict the winner. Backend on Supabase, Vue frontend.</p>
+                <p class="mt-1 text-sm text-stone-700 dark:text-dm-text-secondary">App vote on NBA games and predict the winner. Backend on Supabase, Vue frontend.</p>
               </div>
-              <a href="https://github.com/nlacko97/nba-pred-app" target="_blank" rel="noreferrer" class="text-sm text-stone-900 hover:opacity-80">Repo →</a>
+              <a href="https://github.com/nlacko97/nba-pred-app" target="_blank" rel="noreferrer" class="text-sm text-stone-900 dark:text-dm-text-primary hover:opacity-80">Repo →</a>
             </div>
           </li>
-          <li class="rounded-2xl border border-stone-200 bg-white p-5">
+          <li class="rounded-2xl border border-stone-200 dark:border-dm-border bg-white dark:bg-dm-surface p-5">
             <div class="flex items-start justify-between gap-6">
               <div>
                 <h3 class="font-semibold">Automated Network Deployment</h3>
-                <p class="mt-1 text-sm text-stone-700">Python tooling to generate Vagrant configs for virtual network topologies (VMs, switches, routers) with configurable bandwidth/latency.</p>
+                <p class="mt-1 text-sm text-stone-700 dark:text-dm-text-secondary">Python tooling to generate Vagrant configs for virtual network topologies (VMs, switches, routers) with configurable bandwidth/latency.</p>
               </div>
-              <a href="https://github.com/nlacko97/automated-vagrant-network-deployment" target="_blank" rel="noreferrer" class="text-sm text-stone-900 hover:opacity-80">Repo →</a>
+              <a href="https://github.com/nlacko97/automated-vagrant-network-deployment" target="_blank" rel="noreferrer" class="text-sm text-stone-900 dark:text-dm-text-primary hover:opacity-80">Repo →</a>
             </div>
           </li>
-          <li class="rounded-2xl border border-stone-200 bg-white p-5">
+          <li class="rounded-2xl border border-stone-200 dark:border-dm-border bg-white dark:bg-dm-surface p-5">
             <div class="flex items-start justify-between gap-6">
               <div>
                 <h3 class="font-semibold">Collaborative Whiteboard</h3>
-                <p class="mt-1 text-sm text-stone-700">Real‑time multi‑user whiteboard (drawing, notes, image upload). Built with Node.js and Socket.IO.</p>
+                <p class="mt-1 text-sm text-stone-700 dark:text-dm-text-secondary">Real‑time multi‑user whiteboard (drawing, notes, image upload). Built with Node.js and Socket.IO.</p>
               </div>
-              <a href="https://github.com/nlacko97/collaborative-whiteboard" target="_blank" rel="noreferrer" class="text-sm text-stone-900 hover:opacity-80">Repo →</a>
+              <a href="https://github.com/nlacko97/collaborative-whiteboard" target="_blank" rel="noreferrer" class="text-sm text-stone-900 dark:text-dm-text-primary hover:opacity-80">Repo →</a>
             </div>
           </li>
-          <li class="rounded-2xl border border-stone-200 bg-white p-5">
+          <li class="rounded-2xl border border-stone-200 dark:border-dm-border bg-white dark:bg-dm-surface p-5">
             <div class="flex items-start justify-between gap-6">
               <div>
                 <h3 class="font-semibold">COVID‑19 Tracker</h3>
-                <p class="mt-1 text-sm text-stone-700">Interactive dashboard aggregating global data with trend visualizations. Laravel on AWS EC2.</p>
+                <p class="mt-1 text-sm text-stone-700 dark:text-dm-text-secondary">Interactive dashboard aggregating global data with trend visualizations. Laravel on AWS EC2.</p>
               </div>
-              <a href="https://github.com/nlacko97/covid19-tracker" target="_blank" rel="noreferrer" class="text-sm text-stone-900 hover:opacity-80">Repo →</a>
+              <a href="https://github.com/nlacko97/covid19-tracker" target="_blank" rel="noreferrer" class="text-sm text-stone-900 dark:text-dm-text-primary hover:opacity-80">Repo →</a>
             </div>
           </li>
         </ul>
@@ -601,27 +580,27 @@ interfaces.</li></ul>
    
 
     <!-- Contact -->
-    <section id="contact" class="mt-8 border-t border-stone-200">
+    <section id="contact" class="mt-8 border-t border-stone-200 dark:border-stone-800">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div>
-            <h2 class="text-3xl md:text-4xl font-bold">Let’s talk</h2>
-            <p class="mt-4 text-stone-700">Tell me about your project, timeline, and what success looks like. I’ll get back to you with thoughtful next steps.</p>
-            <div class="mt-6 text-stone-700">
+            <h2 class="text-3xl md:text-4xl font-bold">Let's talk</h2>
+            <p class="mt-4 text-stone-700 dark:text-dm-text-secondary">Tell me about your project, timeline, and what success looks like. I'll get back to you with thoughtful next steps.</p>
+            <div class="mt-6 text-stone-700 dark:text-dm-text-secondary">
               <p>Prefer email or a call?</p>
-              <p class="mt-2">📨 <a class="underline decoration-stone-300 underline-offset-4 hover:decoration-stone-500" href="mailto:laszlo@laszlo-nagy.com">laszlo@laszlo-nagy.com</a></p>
-              <p class="mt-1">📞 <a class="underline decoration-stone-300 underline-offset-4 hover:decoration-stone-500" href="tel:+40740015554">+40 740 015 554</a></p>
+              <p class="mt-2">📨 <a class="underline decoration-stone-300 dark:decoration-stone-700 underline-offset-4 hover:decoration-stone-500 dark:hover:decoration-stone-600" href="mailto:laszlo@laszlo-nagy.com">laszlo@laszlo-nagy.com</a></p>
+              <p class="mt-1">📞 <a class="underline decoration-stone-300 dark:decoration-stone-700 underline-offset-4 hover:decoration-stone-500 dark:hover:decoration-stone-600" href="tel:+40740015554">+40 740 015 554</a></p>
             </div>
           </div>
           <div>
-            <form action="https://formspree.io/f/xrgjlldy" method="POST" class="rounded-2xl border border-stone-200 bg-white p-6">
+            <form action="https://formspree.io/f/xrgjlldy" method="POST" class="rounded-2xl border border-stone-200 dark:border-dm-border bg-white dark:bg-dm-surface p-6">
               <label for="email" class="block text-sm font-medium">Your email</label>
-              <input id="email" name="email" type="email" required placeholder="you@company.com" class="mt-2 w-full rounded-lg border border-stone-300 bg-white p-3 focus:outline-none focus:ring-2 focus:ring-stone-400">
+              <input id="email" name="email" type="email" required placeholder="you@company.com" class="mt-2 w-full rounded-lg border border-stone-300 dark:border-dm-border bg-white dark:bg-stone-800 p-3 focus:outline-none focus:ring-2 focus:ring-stone-400 dark:focus:ring-stone-500">
 
               <label for="message" class="mt-5 block text-sm font-medium">Your message</label>
-              <textarea id="message" name="message" rows="4" required placeholder="What can I help with?" class="mt-2 w-full rounded-lg border border-stone-300 bg-white p-3 focus:outline-none focus:ring-2 focus:ring-stone-400"></textarea>
+              <textarea id="message" name="message" rows="4" required placeholder="What can I help with?" class="mt-2 w-full rounded-lg border border-stone-300 dark:border-dm-border bg-white dark:bg-stone-800 p-3 focus:outline-none focus:ring-2 focus:ring-stone-400 dark:focus:ring-stone-500"></textarea>
 
-              <button type="submit" class="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-stone-900 px-5 py-2.5 text-white hover:bg-stone-800">
+              <button type="submit" class="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-stone-900 dark:bg-dm-accent px-5 py-2.5 text-white dark:text-dm-bg hover:bg-stone-800 dark:hover:bg-dm-accent-hover">
                 Send message
               </button>
             </form>
@@ -632,10 +611,10 @@ interfaces.</li></ul>
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-stone-200">
+  <footer class="border-t border-stone-200 dark:border-dm-border">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between py-8 text-sm text-stone-600">
-        <p>© 2025. Built by <a href="https://laszlo-nagy.com" class="underline decoration-stone-300 underline-offset-4 hover:decoration-stone-500">László Nagy</a>.</p>
+      <div class="flex flex-col md:flex-row items-center justify-between py-8 text-sm text-stone-600 dark:text-dm-text-secondary">
+        <p>© 2025. Built by <a href="https://laszlo-nagy.com" class="underline decoration-stone-300 dark:decoration-stone-700 underline-offset-4 hover:decoration-stone-500 dark:hover:decoration-stone-600">László Nagy</a>.</p>
         <div class="mt-3 md:mt-0 flex items-center gap-4">
           <a href="mailto:laszlo@laszlo-nagy.com" aria-label="Email"><span class="sr-only">Email</span>📨</a>
           <a href="https://www.linkedin.com/in/laszlonagy97" target="_blank" aria-label="LinkedIn" rel="noreferrer">in</a>

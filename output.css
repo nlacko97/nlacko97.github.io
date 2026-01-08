@@ -775,6 +775,15 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(250 250 249 / var(--tw-bg-opacity));
 }
 
+.bg-white\/80{
+  background-color: rgb(255 255 255 / 0.8);
+}
+
+.bg-stone-900{
+  --tw-bg-opacity: 1;
+  background-color: rgb(28 25 23 / var(--tw-bg-opacity));
+}
+
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -783,15 +792,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-stone-100{
   --tw-bg-opacity: 1;
   background-color: rgb(245 245 244 / var(--tw-bg-opacity));
-}
-
-.bg-stone-900{
-  --tw-bg-opacity: 1;
-  background-color: rgb(28 25 23 / var(--tw-bg-opacity));
-}
-
-.bg-white\/80{
-  background-color: rgb(255 255 255 / 0.8);
 }
 
 .bg-stone-300{
@@ -980,14 +980,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(28 25 23 / var(--tw-text-opacity));
 }
 
-.text-stone-700{
-  --tw-text-opacity: 1;
-  color: rgb(68 64 60 / var(--tw-text-opacity));
-}
-
 .text-stone-600{
   --tw-text-opacity: 1;
   color: rgb(87 83 78 / var(--tw-text-opacity));
+}
+
+.text-white{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .text-stone-500{
@@ -995,9 +995,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(120 113 108 / var(--tw-text-opacity));
 }
 
-.text-white{
+.text-stone-700{
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(68 64 60 / var(--tw-text-opacity));
 }
 
 .text-stone-400{
@@ -1140,14 +1140,123 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-ring-color: rgb(168 162 158 / var(--tw-ring-opacity));
 }
 
-@media (prefers-color-scheme: dark){
-  .dark\:block{
-    display: block;
-  }
+.dark .dark\:block{
+  display: block;
+}
 
-  .dark\:hidden{
-    display: none;
-  }
+.dark .dark\:hidden{
+  display: none;
+}
+
+.dark .dark\:border-dm-border{
+  --tw-border-opacity: 1;
+  border-color: rgb(41 37 36 / var(--tw-border-opacity));
+}
+
+.dark .dark\:border-stone-800{
+  --tw-border-opacity: 1;
+  border-color: rgb(41 37 36 / var(--tw-border-opacity));
+}
+
+.dark .dark\:bg-dm-bg{
+  --tw-bg-opacity: 1;
+  background-color: rgb(12 10 9 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-dm-surface\/80{
+  background-color: rgb(28 25 23 / 0.8);
+}
+
+.dark .dark\:bg-dm-accent{
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 249 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-dm-surface{
+  --tw-bg-opacity: 1;
+  background-color: rgb(28 25 23 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-stone-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(87 83 78 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-stone-800{
+  --tw-bg-opacity: 1;
+  background-color: rgb(41 37 36 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:text-dm-text-primary{
+  --tw-text-opacity: 1;
+  color: rgb(250 250 249 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-dm-text-secondary{
+  --tw-text-opacity: 1;
+  color: rgb(214 211 209 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-dm-bg{
+  --tw-text-opacity: 1;
+  color: rgb(12 10 9 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-dm-text-muted{
+  --tw-text-opacity: 1;
+  color: rgb(120 113 108 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-stone-700{
+  --tw-text-opacity: 1;
+  color: rgb(68 64 60 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-stone-300{
+  --tw-text-opacity: 1;
+  color: rgb(214 211 209 / var(--tw-text-opacity));
+}
+
+.dark .dark\:decoration-stone-700{
+  text-decoration-color: #44403c;
+}
+
+.dark .dark\:opacity-70{
+  opacity: 0.7;
+}
+
+.dark .dark\:ring-dm-border{
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(41 37 36 / var(--tw-ring-opacity));
+}
+
+.dark .dark\:hover\:border-stone-700:hover{
+  --tw-border-opacity: 1;
+  border-color: rgb(68 64 60 / var(--tw-border-opacity));
+}
+
+.dark .dark\:hover\:bg-stone-800:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(41 37 36 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:hover\:bg-dm-accent-hover:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(231 229 228 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:hover\:text-dm-text-primary:hover{
+  --tw-text-opacity: 1;
+  color: rgb(250 250 249 / var(--tw-text-opacity));
+}
+
+.dark .dark\:hover\:decoration-stone-600:hover{
+  text-decoration-color: #57534e;
+}
+
+.dark .dark\:focus\:ring-stone-500:focus{
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(120 113 108 / var(--tw-ring-opacity));
 }
 
 @media (min-width: 640px){
